@@ -14,6 +14,7 @@ This project monitors the user’s sitting posture in **real time**. When the pr
 
 - ESP32 Microcontroller
 - Force Sensitive Resistors (FSR)
+- Resistors
 - Buzzer
 - Jumper Wires
 - Power Supply
