@@ -12,7 +12,7 @@ This project monitors the user’s sitting posture in **real time**. When the pr
 
 ## 🔧 Hardware Components
 
-- ESP32 Development Board
+- ESP32 Microcontroller
 - Force Sensitive Resistors (FSR)
 - Buzzer
 - Jumper Wires
@@ -22,9 +22,8 @@ This project monitors the user’s sitting posture in **real time**. When the pr
 ## 💻 Software & Technologies
 
 - **Arduino IDE** (for ESP32 programming)
-- **Android Studio** (Java/Kotlin)
-- **Bluetooth / WiFi** for communication
-- GitHub for version control
+- **Android Studio** (Java)
+- **Bluetooth** for communication
 
 ## ⚙️ System Workflow
 
@@ -62,9 +61,9 @@ This project monitors the user’s sitting posture in **real time**. When the pr
 
 ## 👥 Team
 
+- Bhumika Salian
+- Keerthana Shenoy
 - Krissel Rhea
-- Teammate 1
-- Teammate 2
 
 ## 📄 License
 
