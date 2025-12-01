@@ -1,12 +1,10 @@
 🪑 Smart Chair Posture Notifier
 
-An IoT + Android system that detects incorrect sitting posture using Force Sensitive Resistors (FSR) mounted on a chair and alerts the user through a buzzer and a mobile application.
-Designed to encourage healthy posture habits and reduce long-term back strain.
+An IoT + Android system that detects incorrect sitting posture using Force Sensitive Resistors (FSR) mounted on a chair and alerts the user through a buzzer and a mobile application. Designed to encourage healthy posture habits and reduce long-term back strain.
 
 📌 Project Overview
 
-This project monitors the user’s sitting posture in real time.
-When the pressure distribution on the chair indicates slouching or leaning, the system:
+This project monitors the user’s sitting posture in real time. When the pressure distribution on the chair indicates slouching or leaning, the system:
 
 Activates a buzzer alert
 
@@ -40,9 +38,9 @@ GitHub for version control
 
 ⚙️ System Workflow
 
-User sits on the chair → FSRs detect pressure.
+User sits on the chair → FSRs detect pressure
 
-ESP32 reads sensor data.
+ESP32 reads sensor data
 
 If posture is incorrect:
 
@@ -58,13 +56,13 @@ App displays “Correct posture”
 
 🔍 Posture Detection Logic
 
-FSRs measure pressure at multiple points on the chair.
+FSRs measure pressure at multiple points on the chair
 
-ESP32 compares values to preset thresholds.
+ESP32 compares values to preset thresholds
 
-Uneven pressure = slouching/leaning → alert triggered.
+Uneven pressure = slouching/leaning → alert triggered
 
-Balanced pressure = correct posture.
+Balanced pressure = correct posture
 
 🚀 Features
 
