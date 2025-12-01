@@ -1,24 +1,9 @@
 #include <Preferences.h>
-#include <WiFi.h>
-#include <FirebaseESP32.h>
 
 #define FSR_SEAT 26
 #define FSR_BACK 2
 //#define LED_PIN 25
 #define BUZZER_PIN 12
-
-// ---- WiFi Credentials ----
-const char* WIFI_SSID = "No_free_wifi_for_u";
-const char* WIFI_PASS = "krissel19";
-
-// ---- Firebase Credentials ----
-#define API_KEY "AIzaSyBg5mCv9yWJdG_8F2SFQgUnfotU_rGoXxo"
-#define DATABASE_URL "https://smartpostureandroid-default-rtdb.asia-southeast1.firebasedatabase.app/"   // e.g. https://my-posture-app-default-rtdb.firebaseio.com/
-
-FirebaseData fbdo;
-FirebaseAuth auth;
-FirebaseConfig config;
-unsigned long lastSend = 0; // limit sending rate
 
 Preferences prefs;
 
@@ -113,43 +98,6 @@ void setup() {
   }
 
   Serial.println("Type RESETCAL to recalibrate anytime.");
-
-  // ---- Connect WiFi ----
-  Serial.println("Connecting to WiFi...");
-  WiFi.begin(WIFI_SSID, WIFI_PASS);
-  while (WiFi.status() != WL_CONNECTED) {
-  delay(300);
-  Serial.print(".");
-}
-Serial.println("\nWiFi Connected!");
-
-// ---- Firebase Setup ----
-config.api_key = API_KEY;
-config.database_url = DATABASE_URL;
-
-// Sign in anonymously
-if (Firebase.signUp(&config, &auth, "", "")) {
-    Serial.println("Firebase Auth success!");
-} else {
-    Serial.printf("Firebase Auth failed: %s\n", config.signer.signupError.message.c_str());
-}
-
-Firebase.begin(&config, &auth);
-Firebase.reconnectWiFi(true);
-
-}
-
-void sendPostureToFirebase(bool poor) {
-  if (millis() - lastSend < 2000) return;  // send every 2 sec only
-  lastSend = millis();
-
-  String status = poor ? "POOR" : "GOOD";
-
-  if (Firebase.RTDB.setString(&fbdo, "/posture/status", status)) {
-    Serial.println("Firebase update OK: " + status);
-  } else {
-    Serial.println("Firebase FAILED: " + fbdo.errorReason());
-  }
 }
 
 void loop() {
@@ -169,8 +117,8 @@ void loop() {
   Serial.print("Seat: "); Serial.print(seat);
   Serial.print("  Back: "); Serial.print(back);
 
-  int seatThreshold = baseSeat * 0.50;
-  int backThreshold = baseBack * 0.50;
+  int seatThreshold = baseSeat * 0.20;
+  int backThreshold = baseBack * 0.20;
 
   bool poor = false;
 
@@ -189,17 +137,15 @@ void loop() {
     if (millis() - poorPostureStart > window) {
       //digitalWrite(LED_PIN, HIGH);
       digitalWrite(BUZZER_PIN, HIGH);
-      sendPostureToFirebase(true);
       Serial.print("  <-- ALERT!");
     }
   } else {
     poorPostureStart = 0;
     //digitalWrite(LED_PIN, LOW);
     digitalWrite(BUZZER_PIN, LOW);
-    sendPostureToFirebase(false);
     Serial.print("  --> Good");
   }
 
   Serial.println();
-  delay(200);
+  delay(200);
 }
