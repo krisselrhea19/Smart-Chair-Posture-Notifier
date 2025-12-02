@@ -1,5 +1,6 @@
 
-
+// This is the initial code we used to test the circuit on TinkerCad and
+// also to ensure the FSRs were working fine
 
 const int FSR1_PIN = 34;   // ADC pin - FSR1
 const int FSR2_PIN = 35;   // ADC pin - FSR2
