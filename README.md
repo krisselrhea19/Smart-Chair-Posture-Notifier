@@ -16,6 +16,7 @@ This project monitors the user’s sitting posture in **real time**. When the pr
 - Force Sensitive Resistors (FSR)
 - Resistors
 - Buzzer
+- LED
 - Jumper Wires
 - Power Supply
 - Chair Base (for sensor placement)
