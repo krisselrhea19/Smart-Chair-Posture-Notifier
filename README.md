@@ -4,7 +4,7 @@ An **IoT + Android** system that detects incorrect sitting posture using **Force
 
 ## 📌 Project Overview
 
-This project monitors the user’s sitting posture in **real time**. When the pressure distribution on the chair indicates slouching or leaning, the system:
+The project monitors the user’s sitting posture in **real time**. When the pressure distribution on the chair indicates slouching or leaning, the system:
 
 - Activates a **buzzer alert**
 - Sends the posture status to the **Android app**
